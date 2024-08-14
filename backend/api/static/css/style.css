@@ -1,0 +1,432 @@
+/* Main page styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #76affb; */
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.left-side {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.left-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-container {
+    flex: 1;
+    perspective: 1000px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-container.flip .flip-content {
+    transform: rotateY(180deg);
+}
+
+.right-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #76affb; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side.login-side {
+    transform: rotateY(0deg);
+}
+
+.right-side.sign-up-side {
+    transform: rotateY(180deg);
+}   
+
+.login-form, .sign-up-form {
+    width: 100%;
+    max-width: 400px; 
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.input-group .input-icon {
+    position: absolute;
+    top: 65%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.input-group .username-icon {
+    background-image: url('/img/userNameIcon.png');
+}
+
+.input-group .email-icon {
+    background-image: url('/img/emailIcon.png');
+}
+
+.input-group .password-icon {
+    background-image: url('/img/passwordIcon.png');
+}
+
+.input-group input {
+    font-size: 14px;
+    width: calc(100% - 40px);
+    padding: 8px 10px 8px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actions input {
+    margin-right: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.or hr {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    border: none;
+    margin: 0 10px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.social-buttons button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.social-buttons .help-button {
+    background-image: url('/img/helpIcon.png');
+}
+
+.social-buttons .info-button {
+    background-image: url('/img/privacyIcon.png');
+}
+
+.social-buttons .more-button {
+    background-image: url('/img/communityIcon.png');
+}
+
+.social-buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.flip-toggle {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.flip-toggle:hover {
+    text-decoration: underline;
+}
+
+/* Modal styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    position: relative;
+    background-color: transparent; 
+    margin: auto;
+    padding: 0;
+    border: none;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-image {
+    width: 70%;
+    height: auto;
+}
+
+.Privacy-image {
+    width: 70%;
+    height: auto;
+}
+
+.Community-image {
+    width: 70%;
+    height: auto;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 3px;
+    left: 110px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+}
+
+.back-button:hover {
+    background-color: transparent;
+}
+
+.back-button img {
+    width: 30px;
+    height: 30px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.blurred .container {
+    filter: blur(8px);
+    transition: filter 0.3s;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .left-side {
+        flex: none;
+        width: 100%;
+        height: auto;
+    }
+    
+    .flip-container {
+        flex: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .flip-content {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .left-side img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .flip-container {
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .right-side {
+        height: auto;
+        border-radius: 0;
+    }
+    
+    .login-form, .sign-up-form {
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .social-buttons {
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group .input-icon {
+        position: static;
+        margin-bottom: 8px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions input {
+        margin: 0;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-buttons button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .help-image, .Privacy-image, .Community-image {
+        width: 100%;
+    }
+
+    .back-button {
+        top: 10px;
+        left: 10px;
+    }
+
+    .back-button img {
+        width: 24px;
+        height: 24px;
+    }
+}

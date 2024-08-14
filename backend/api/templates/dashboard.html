@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <img src="{% static 'assets/login.png' %}" alt="Team Meeting" />
+      </div>
+      <div class="flip-container">
+        <div class="flip-content">
+          <div class="right-side login-side">
+            <!-- Login Form -->
+            <div class="login-form">
+              <h1>Log In</h1>
+              <p>Enter Credentials to Proceed</p>
+              <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <div class="input-group">
+                    <label for="{{ form.username.id_for_label}}"
+                      >Username</label
+                    >
+                    <div class="input-wrapper">
+                      <span class="input-icon username-icon"></span>
+                      <input
+                        type="text"
+                        name="{{ form.username.name }}"
+                        class="form-control"
+                        value="{{ form.username.value}}"
+                      />
+                      {% if form.username.errors %}
+                      <span class="text-danger"
+                        >{{ form.username.errors }}</span
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="{{ form.password.id_for_label}}">Password</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon password-icon"></span>
+                    <input
+                      type="password"
+                      name="{{ form.password.name }}"
+                      class="form-control"
+                      value="{{ form.password.value }}"
+                    />
+                    <span class="text-danger">{{ form.password.errors }}</span>
+                  </div>
+                </div>
+                <div class="actions">
+                  <div>
+                    <input type="checkbox" id="remember" name="remember" />
+                    <label for="remember">Remember me</label>
+                  </div>
+                  <a href="resetPassword.html">Forgot Password?</a>
+                </div>
+                <button type="submit">Log In</button>
+                <div class="or">
+                  <hr />
+                  <p>Or</p>
+                  <hr />
+                </div>
+                <div class="social-buttons">
+                  <button
+                    type="button"
+                    aria-label="Help"
+                    class="help-button"
+                  ></button>
+                  <button
+                    type="button"
+                    aria-label="Info"
+                    class="info-button"
+                  ></button>
+                  <button
+                    type="button"
+                    aria-label="More"
+                    class="more-button"
+                  ></button>
+                </div>
+                <p>
+                  Don't have an account?
+                  <a href="#" class="flip-toggle">Sign Up!</a>
+                </p>
+              </form>
+            </div>
+          </div>
+          <div class="right-side sign-up-side">
+            <!-- Sign-Up Form -->
+            <div class="sign-up-form">
+              <h2>Sign Up</h2>
+              <p>Enter Your Details to Create an Account</p>
+              <form>
+                <div class="input-group">
+                  <i class="input-icon username-icon"></i>
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="input-icon email-icon"></i>
+                  <label for="email">E-mail Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="input-icon password-icon"></i>
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="input-icon password-icon"></i>
+                  <label for="confirm-password">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirm-password"
+                    name="confirm-password"
+                    placeholder="Confirm Password"
+                    required
+                  />
+                </div>
+                <button type="submit">Sign Up</button>
+                <div class="or">
+                  <hr />
+                  <p>Or</p>
+                  <hr />
+                </div>
+                <div class="social-buttons">
+                  <button
+                    type="button"
+                    aria-label="Help"
+                    class="help-button"
+                  ></button>
+                  <button
+                    type="button"
+                    aria-label="Info"
+                    class="info-button"
+                  ></button>
+                  <button
+                    type="button"
+                    aria-label="More"
+                    class="more-button"
+                  ></button>
+                </div>
+                <p>
+                  Already have an account?
+                  <a href="#" class="flip-toggle">Log In!</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <button id="back-button" class="back-button">
+          <img src="img/back.png" alt="Back" />
+        </button>
+        <img src="img/Help.png" alt="Help Image" class="help-image" />
+        <img src="img/Privacy.png" alt="Privacy Image" class="Privacy-image" />
+        <img
+          src="img/Community.png"
+          alt="Community Image"
+          class="Community-image"
+        />
+      </div>
+    </div>
+
+    <script src="{% static 'js/Script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>
