@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +19,7 @@
             <div class="login-form">
               <h1>Log In</h1>
               <p>Enter Credentials to Proceed</p>
-              <form method="POST" action="{% url 'login' %}">
+              <form method="POST" action="{% url 'register' %}">
                 {% csrf_token %}
                 <div class="form-group">
                   <div class="input-group">
@@ -88,7 +87,9 @@
                 </div>
                 <p>
                   Don't have an account?
-                  <a href="#" class="flip-toggle">Sign Up!</a>
+                  <a href="{% url 'register' %}" class="flip-toggle"
+                    >Sign Up!</a
+                  >
                 </p>
               </form>
             </div>
@@ -168,7 +169,7 @@
                 </div>
                 <p>
                   Already have an account?
-                  <a href="#" class="flip-toggle">Log In!</a>
+                  <a href="{% url 'register' %}" class="flip-toggle">Log In!</a>
                 </p>
               </form>
             </div>
@@ -190,7 +191,6 @@
         />
       </div>
     </div>
-
     <script src="{% static 'js/Script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
